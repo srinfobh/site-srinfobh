@@ -1,4 +1,4 @@
-<?
+<?php
 $hoje_tmp = getdate();
 $hoje = ($hoje_tmp[hours].":".$hoje_tmp[minutes].":".$hoje_tmp[seconds]);
 
@@ -11,12 +11,12 @@ $mensagem = $_POST["mensagem"];
 
 global $email;
 
-// FAÇA ESTAS CONFIGURAÇÕES
+// FAï¿½A ESTAS CONFIGURAï¿½ï¿½ES
 
 $enviou = mail("contato@srinfobh.com.br", // COLOQUE SEU E-MAIL AQUI!
 "Mensagem de CLIENTE do Site", // COLOQUE O ASSUNTO DO E-MAIL A SER RECEBIDO
 
-// TERMINO DA CONFIGURAÇÃO
+// TERMINO DA CONFIGURAï¿½ï¿½O
 
 "Nome: $nome
  E-mail: $email
@@ -32,7 +32,7 @@ if ($enviou){
 }
 
 else {
-?> <script language="javascript"> alert ('<? echo "$nome, Não enviado<br>Tente novamente."; ?>') </script> <?
+?> <script language="javascript"> alert ('<? echo "$nome, Nï¿½o enviado<br>Tente novamente."; ?>') </script> <?
 
 }
 ?>

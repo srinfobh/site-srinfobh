@@ -1,51 +1,51 @@
-<?
+<?php
 
-// Destruo o $carac, para não ficar sobrepondo varias vezes.
+// Destruo o $carac, para nï¿½o ficar sobrepondo varias vezes.
 unset($carac);
 	
 	// Crio uma imagem com 6 caracteres   - ALTERADO PARA ATE 5 CARACTERES
 	for ($i = 0; $i < 4 ;$i++) {
-		// Seleciona de 0 à 2, onde 0 = letra maiúscula, 1 = minúscula e 2 = número.
+		// Seleciona de 0 ï¿½ 2, onde 0 = letra maiï¿½scula, 1 = minï¿½scula e 2 = nï¿½mero.
 		$tipo = rand(2,2);
 		switch($tipo) {
-			// se pegou 0 ele cria uma letra maiúscula de A à Z.
-			// com um porém, o chr(rand(65,90)), a função chr retorna um caractere específico, e o rand seleciona aleatório.
+			// se pegou 0 ele cria uma letra maiï¿½scula de A ï¿½ Z.
+			// com um porï¿½m, o chr(rand(65,90)), a funï¿½ï¿½o chr retorna um caractere especï¿½fico, e o rand seleciona aleatï¿½rio.
 			// o motivo de estar rand(56,90), pois temos que usar de acordo com a tabela ASCII e o A = 65 e o Z = 90.
 			case 0 : $str = chr(rand(65,90)); break;
-			// mesma coisa que antes, mais aqui é minúsculo.
+			// mesma coisa que antes, mais aqui ï¿½ minï¿½sculo.
 			case 1 : $str = chr(rand(97,122)); break;
-			// mesma coisa que antes só que aqui são números.
+			// mesma coisa que antes sï¿½ que aqui sï¿½o nï¿½meros.
 			case 2 : $str = chr(rand(48,57)); break;
 			// caso ocorra algun erro no rand tipo ele para por aqui.
 			default : break; break;
 		}
 		
-		// Gera um tamanho para a fonte de 3 à 5.
+		// Gera um tamanho para a fonte de 3 ï¿½ 5.
 		$tamanho = rand(5,5);
 		
-		// Seleciona as cor RGB, menos muito clara, pois o fundo é branco, por isso de 0 à 200.
+		// Seleciona as cor RGB, menos muito clara, pois o fundo ï¿½ branco, por isso de 0 ï¿½ 200.
 		$sel_corR = rand(0,200);
 		$sel_corG = rand(0,200);
 		$sel_corB = rand(0,200);
 		
-		// Joga os caracteres em um determinado lugar da imagem, x e y, sendo x sempre ele mais ele, pra não perder a ordem.
-		// Nome que começa em 10 e termina em 30, pois temos 6 caracteres, e nossa imagem tem 180px,
-		// por isso que vai ser de 30 em 30. e 10 para não ficar um caractere em cima do outro.
+		// Joga os caracteres em um determinado lugar da imagem, x e y, sendo x sempre ele mais ele, pra nï¿½o perder a ordem.
+		// Nome que comeï¿½a em 10 e termina em 30, pois temos 6 caracteres, e nossa imagem tem 180px,
+		// por isso que vai ser de 30 em 30. e 10 para nï¿½o ficar um caractere em cima do outro.
 		$x += rand(10,30);
-		// o Y vai de 0 a 30, não a 50, pois pode cortar pois nossa imagem é de 50 px de altura.
+		// o Y vai de 0 a 30, nï¿½o a 50, pois pode cortar pois nossa imagem ï¿½ de 50 px de altura.
 		$y = rand(0,30);
 		
-		// Gera um array carac, com os dados que é o caractere, a cor do caractere, a posição x e y.
+		// Gera um array carac, com os dados que ï¿½ o caractere, a cor do caractere, a posiï¿½ï¿½o x e y.
 		$carac[] = array("c" => $str, "tam" => $tamanho, "corR" => $sel_corR, "corG" => $sel_corG, "corB" => $sel_corB, "x" => $x, "y" => $y);
 		
-		// crio a variavel para usar e criar a sessão logo abaixo com os caracteres que forão criados.
+		// crio a variavel para usar e criar a sessï¿½o logo abaixo com os caracteres que forï¿½o criados.
 		$auth .= $str;
 	}
 
-// Crio a sessão carac, que é igual ao array dos caracteres, que utiliza para montar a imagem la na classe.
+// Crio a sessï¿½o carac, que ï¿½ igual ao array dos caracteres, que utiliza para montar a imagem la na classe.
 $_SESSION["carac"] = $carac;
 
-// Crio a sessão autenticaIMG com os caracteres que estão na imagem, que utilizo para verificar se o cara digitou certo.
+// Crio a sessï¿½o autenticaIMG com os caracteres que estï¿½o na imagem, que utilizo para verificar se o cara digitou certo.
 $_SESSION["autenticaIMG"] = $auth;
 
 ?>

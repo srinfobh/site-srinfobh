@@ -1,10 +1,10 @@
-<?
+<?php
 /*****************************************
 **	Classe		-	Imagem
-**	Descrição	-	Cria a imagem
+**	Descriï¿½ï¿½o	-	Cria a imagem
 ******************************************/
 
-// Inicio a sessão, pois estamos trabalhando com sessões.
+// Inicio a sessï¿½o, pois estamos trabalhando com sessï¿½es.
 session_start(); 
 
 class Imagem{
@@ -12,8 +12,8 @@ class Imagem{
 	
 	function geraImagem(){
 	
-		// Seleciona uma imagem que está na pasta bg/ com o nome 0.jpg à 9.jpg,
-		// está imagem que vai ser o fundo da nossa imagem de segurança.
+		// Seleciona uma imagem que estï¿½ na pasta bg/ com o nome 0.jpg ï¿½ 9.jpg,
+		// estï¿½ imagem que vai ser o fundo da nossa imagem de seguranï¿½a.
 		$fundo = "bg/";
 		$fundo .= 8;
 		$fundo .= ".jpg";
@@ -21,18 +21,18 @@ class Imagem{
 		// Cria a imagem.
 		$imagem = imagecreatefromjpeg($fundo);
 
-		// seta o $this->carac que é a sessão carac.
+		// seta o $this->carac que ï¿½ a sessï¿½o carac.
 		$this->carac = $_SESSION["carac"];
 		
 		// percorre o array carac, e traz os valores.
 		foreach($this->carac as $linha) {
 			// Aqui crio a cor de cada caractere, RGB.
 			$cor = imagecolorallocate($imagem, $linha["corR"], $linha["corG"], $linha["corB"]);
-			// desenho o lugar dos caracteres de acordo com as posições x e y.
+			// desenho o lugar dos caracteres de acordo com as posiï¿½ï¿½es x e y.
 			imagestring($imagem, $linha["tam"], $linha["x"], $linha["y"], $linha["c"], $cor);
 		}
 		
-		// ele informa que isso é um arquivo PNG
+		// ele informa que isso ï¿½ um arquivo PNG
 		header("Content-type: image/png");
 		
 		// cria a imagem PNG

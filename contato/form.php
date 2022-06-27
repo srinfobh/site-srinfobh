@@ -1,41 +1,41 @@
-<?
+<?php
 session_start();
 
 error_reporting(0);
-ini_set(“display_errors”, 0 );
+ini_set(ï¿½display_errorsï¿½, 0 );
 
-// Inicio a sessão, pois estamos trabalhando com sessões.
+// Inicio a sessï¿½o, pois estamos trabalhando com sessï¿½es.
 
-// Aqui é a ação do formulário, se clicar em enviar ele chama isto.
+// Aqui ï¿½ a aï¿½ï¿½o do formulï¿½rio, se clicar em enviar ele chama isto.
 if( $_GET["validar"] == "form" ){
 
-	// Texto digitado no campo imagem, e transformando tudo em mínúsculo, caso queria que haja distinção de maiúsculas e minúsculas, só retire o strtoupper().
+	// Texto digitado no campo imagem, e transformando tudo em mï¿½nï¿½sculo, caso queria que haja distinï¿½ï¿½o de maiï¿½sculas e minï¿½sculas, sï¿½ retire o strtoupper().
  	$txtImagem = strtoupper($_POST["txtImagem"]);
 	
-	// Caracteres que estão na imagem, também deixando tudo em minúsulo.
+	// Caracteres que estï¿½o na imagem, tambï¿½m deixando tudo em minï¿½sulo.
 	$valorImagem = strtoupper($_SESSION["autenticaIMG"]);
 	
-	// Verificando se o texto digitado, for igual aos caracteres que estão na imagem
+	// Verificando se o texto digitado, for igual aos caracteres que estï¿½o na imagem
 	if( $txtImagem == $valorImagem ){
 		//echo "Mensagem enviada...";
 		
-        include ("enviar.php"); /* Se os dados estão corretos então enviará o e-mail com os formulário abaixo
-                                   Não esqueça de Configurar o Enviar.php */
+        include ("enviar.php"); /* Se os dados estï¿½o corretos entï¿½o enviarï¿½ o e-mail com os formulï¿½rio abaixo
+                                   Nï¿½o esqueï¿½a de Configurar o Enviar.php */
 
 
     } else {
-		?> <script language="javascript"> alert ('<? echo "Desculpa ". $_POST["Nome"] .", os caracteres digitados estão incorretos!"; ?>') </script> <?
+		?> <script language="javascript"> alert ('<? echo "Desculpa ". $_POST["Nome"] .", os caracteres digitados estï¿½o incorretos!"; ?>') </script> <?
 	}
 
 }
 
-// Incluindo o imgSet.php que seta os valores da sessão.
+// Incluindo o imgSet.php que seta os valores da sessï¿½o.
 require_once ("imgSet.php");	
 
 ?>
 <!--
 Notem que ali no <img src="imgGera.php">, eu chamo o arquivo imgGera.php...
-estou adicionando ele, pois nele que está instânciada a classe imagem
+estou adicionando ele, pois nele que estï¿½ instï¿½nciada a classe imagem
 -->
 
 
